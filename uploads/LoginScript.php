@@ -54,9 +54,14 @@ if (isset($_POST['btn_login'])) {
         session_regenerate_id(true);
 
         // Redirect the user based on their role
+        // $roleMappings = [
+        //     'ADMIN' => $_SERVER["DOCUMENT_ROOT"] . '/frontend/views/index.php',
+        //     'EMPLOYEE' => $_SERVER["DOCUMENT_ROOT"] . '/frontend/views/index.php',
+        // ];
+
         $roleMappings = [
-            'ADMIN' => $_SERVER["DOCUMENT_ROOT"] . '/frontend/views/index.php',
-            'EMPLOYEE' => $_SERVER["DOCUMENT_ROOT"] . '/frontend/views/index.php',
+            'ADMIN' => 'http://app.osca.local/backend\scripts\auth\LoginScript.php',
+            'EMPLOYEE' => 'http://app.osca.local/backend\scripts\auth\LoginScript.php',
         ];
 
         $redirectPath = $roleMappings[$result['role']] ?? '/frontend/auth/index.php?alert=user_not_found';
